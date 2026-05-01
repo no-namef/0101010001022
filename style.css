@@ -1,0 +1,193 @@
+:root {
+  --bg:#07080f;--surface:#0e0f1a;--card:#13141f;--border:#252638;
+  --gold:#c9a227;--gold2:#f0c040;--red:#c0272d;--red2:#e03030;
+  --green:#1d8a4e;--teal:#1a8a7a;--blue:#2a5fa0;--purple:#6030a0;
+  --silver:#7090b0;--orange:#c07020;--pink:#b03060;
+  --text:#ccc8be;--dim:#6a6460;--white:#e8e4dc;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IM Fell English',Georgia,serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* ── BG ── */
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 15% 10%,#0d0d2a 0%,transparent 60%),
+             radial-gradient(ellipse 60% 50% at 85% 85%,#1a0808 0%,transparent 60%),var(--bg)}
+.bg::after{content:'';position:absolute;inset:0;
+  background-image:radial-gradient(1px 1px at 8% 15%,rgba(255,255,255,.25) 0%,transparent 100%),
+    radial-gradient(1px 1px at 25% 55%,rgba(255,255,255,.18) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 8%,rgba(255,255,255,.22) 0%,transparent 100%),
+    radial-gradient(1px 1px at 70% 45%,rgba(255,255,255,.15) 0%,transparent 100%),
+    radial-gradient(1px 1px at 88% 20%,rgba(255,255,255,.2) 0%,transparent 100%),
+    radial-gradient(1px 1px at 40% 80%,rgba(255,255,255,.17) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 92% 65%,rgba(255,255,255,.12) 0%,transparent 100%),
+    radial-gradient(1px 1px at 60% 92%,rgba(255,255,255,.14) 0%,transparent 100%)}
+
+.wrap{position:relative;z-index:1;max-width:660px;margin:0 auto;padding:16px 12px 60px}
+
+/* ── HEADER ── */
+.hdr{text-align:center;padding:28px 0 18px;border-bottom:1px solid #2a2a3e;margin-bottom:18px}
+.hdr h1{font-family:'Cinzel Decorative',serif;font-size:1.7rem;font-weight:900;
+  color:var(--gold);letter-spacing:2px;
+  text-shadow:0 0 30px rgba(201,162,39,.5),0 0 60px rgba(201,162,39,.2)}
+.hdr .sub{font-size:.75rem;color:var(--dim);letter-spacing:3px;margin-top:5px;text-transform:uppercase}
+
+/* ── PANEL ── */
+.panel{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px}
+.panel h3{font-family:'Cinzel',serif;font-size:.85rem;color:var(--gold);letter-spacing:2px;margin-bottom:14px;text-transform:uppercase}
+
+/* ── SETUP ── */
+.add-row{display:flex;gap:8px;margin-bottom:10px}
+.add-row input{flex:1;background:#0a0b15;color:var(--white);border:1px solid var(--border);
+  border-radius:8px;padding:10px 12px;font-family:'IM Fell English',serif;font-size:.95rem}
+.add-row input:focus{outline:none;border-color:var(--gold)}
+.b-add{background:var(--green);color:#fff;border:none;border-radius:8px;
+  padding:10px 16px;cursor:pointer;font-family:'Cinzel',serif;font-size:.75rem;font-weight:700;white-space:nowrap}
+
+.si{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.025);
+  border:1px solid var(--border);border-radius:8px;padding:9px 11px;margin-bottom:6px}
+.si .sn{flex:1;font-size:.9rem;color:var(--white)}
+.si select{background:#0a0b15;color:var(--text);border:1px solid var(--border);
+  border-radius:6px;padding:5px 7px;font-family:'IM Fell English',serif;font-size:.82rem;max-width:160px}
+.si .bl{border:none;border-radius:6px;padding:5px 9px;cursor:pointer;font-size:.75rem;font-weight:700;transition:.2s}
+.si .bl.on{background:#8a1a28;color:#ffaaaa}
+.si .bl.off{background:#222;color:#666}
+.si .bx{background:none;border:none;color:#444;cursor:pointer;font-size:.95rem;padding:3px 6px}
+.si .bx:hover{color:var(--red)}
+
+.b-start{width:100%;padding:16px;font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--red),#6a1218);
+  color:#fff;border:none;border-radius:10px;cursor:pointer;margin-top:14px;transition:.2s}
+.b-start:hover:not(:disabled){filter:brightness(1.2);transform:translateY(-1px)}
+.b-start:disabled{opacity:.2;cursor:not-allowed;transform:none}
+
+/* ── PHASE BANNER ── */
+#banner{display:flex;align-items:center;justify-content:space-between;
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:12px 16px;margin-bottom:12px;transition:all .4s}
+#banner.night{border-color:#2a2a5a;background:#0a0a1e}
+#banner.day{border-color:#4a3a12;background:#160f04}
+#phaseTitle{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:var(--white)}
+#phaseInfo{font-size:.78rem;color:var(--dim);font-style:italic;margin-top:3px}
+#phaseBtn{font-family:'Cinzel',serif;font-size:.72rem;font-weight:700;
+  padding:9px 16px;border-radius:8px;border:none;cursor:pointer;
+  background:var(--gold);color:#000;letter-spacing:1px;transition:.2s;white-space:nowrap}
+#phaseBtn:hover{filter:brightness(1.2)}
+
+/* ── SCOREBAR ── */
+.sbar{display:flex;justify-content:space-around;background:#0a0b15;
+  border:1px solid var(--border);border-radius:10px;padding:9px;margin-bottom:12px;font-size:.78rem}
+.sbar span{display:flex;align-items:center;gap:5px;font-family:'Cinzel',serif}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+.dot.v{background:var(--green)}.dot.w{background:var(--red)}.dot.n{background:var(--purple)}
+
+/* ── LOG ── */
+#log{background:#080910;border:1px solid #1e1f30;border-radius:10px;
+  padding:11px 14px;min-height:52px;margin-bottom:14px;
+  max-height:180px;overflow-y:auto;font-size:.85rem;line-height:1.7}
+.le{margin-bottom:3px;color:var(--silver);opacity:.6}
+.le:last-child{color:#e8e4dc;opacity:1;font-weight:bold}
+
+/* ── PLAYER CARD ── */
+.pc{background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:13px;margin-bottom:9px;transition:all .3s;position:relative;overflow:hidden}
+.pc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;background:var(--border)}
+.pc.v::before{background:var(--green)}
+.pc.w::before{background:var(--red)}
+.pc.n::before{background:var(--purple)}
+.pc.dead{opacity:.3;filter:grayscale(.9);border-color:#111}
+.pc.targeted{border-color:var(--red);box-shadow:0 0 14px rgba(192,39,45,.35)}
+.pc.protected{border-color:var(--teal);box-shadow:0 0 12px rgba(26,138,122,.3)}
+
+.ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.pname{font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;color:var(--white)}
+.prole{font-size:.78rem;color:var(--dim);font-style:italic;margin-top:2px}
+.pbadges{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}
+.badge{font-size:.65rem;padding:2px 7px;border-radius:20px;font-weight:700;white-space:nowrap}
+.b-lover{background:#5a1020;color:#ff9999}
+.b-target{background:#4a0808;color:#ff6666;animation:bpulse 1s infinite}
+.b-prot{background:#0a302a;color:#40c0b0}
+.b-curse{background:#2a1a40;color:#c090ff}
+.b-drunk{background:#3a2208;color:#f0a040}
+.b-cult{background:#2a1a30;color:#e080e0}
+.b-tough{background:#1a2a10;color:#80d040}
+.b-elder{background:#302010;color:var(--gold)}
+.b-sil{background:#181828;color:#8090c0}
+.b-mason{background:#102030;color:#60a8d0}
+.b-ghost{background:#202028;color:#c0c8e0}
+@keyframes bpulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── ACTION BUTTONS ── */
+.acts{display:flex;gap:5px;flex-wrap:wrap;margin-top:3px}
+.ab{border:none;border-radius:7px;padding:6px 10px;cursor:pointer;
+  font-family:'Cinzel',serif;font-size:.65rem;font-weight:700;letter-spacing:.3px;
+  transition:all .15s;white-space:nowrap}
+.ab:hover:not(:disabled){filter:brightness(1.25);transform:translateY(-1px)}
+.ab:disabled{opacity:.12;cursor:not-allowed;transform:none}
+.ab.hidden{display:none!important}
+.aw{background:var(--red);color:#fff}         /* wolf kill */
+.av{background:var(--gold);color:#000}         /* vote */
+.as{background:var(--teal);color:#fff}         /* save/protect */
+.aseer{background:var(--silver);color:#000}    /* seer */
+.awitch-h{background:var(--green);color:#fff}  /* witch heal */
+.awitch-p{background:#7a1060;color:#fff}       /* witch poison */
+.acupid{background:var(--pink);color:#fff}     /* cupid */
+.ahunter{background:var(--orange);color:#000;animation:bpulse .7s infinite} /* hunter */
+.asorcs{background:#601888;color:#fff}         /* sorceress */
+.atrouble{background:#205080;color:#fff}       /* troublemaker */
+.amason{background:#104060;color:#fff}         /* mason reveal */
+.amayor{background:#806020;color:#fff}         /* mayor */
+.ahag{background:#406020;color:#fff}           /* old hag */
+.achupa{background:#206040;color:#fff}         /* chupacabra */
+.awild{background:#804020;color:#fff}          /* wild child */
+.adire{background:#602020;color:#fff}          /* dire wolf */
+.adopp{background:#404060;color:#fff}          /* doppelganger */
+.acult{background:#501860;color:#fff}          /* cult */
+.amarty{background:#503010;color:#fff}         /* martyr */
+.aghost{background:#304060;color:#fff}         /* ghost */
+.abloodm{background:#800020;color:#fff}        /* bloody mary */
+.alepr{background:#206000;color:#fff}          /* leprechaun */
+.ab-done{background:#333;color:#888}           /* done/pass */
+
+/* ── WITCH PANEL ── */
+.witch-info{font-size:.78rem;color:var(--dim);font-style:italic;margin-bottom:7px}
+
+/* ── ROLE LEGEND GRID ── */
+.rl-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.rl-item{background:rgba(255,255,255,.02);border:1px solid #1e1f2a;border-radius:7px;padding:8px 10px}
+.rl-name{font-family:'Cinzel',serif;font-size:.68rem;color:var(--gold)}
+.rl-team{font-size:.63rem;padding:1px 6px;border-radius:10px;display:inline-block;margin:2px 0}
+.rl-desc{font-size:.7rem;color:var(--dim);font-style:italic;line-height:1.35;margin-top:3px}
+
+/* ── WIN OVERLAY ── */
+#win{display:none;position:fixed;inset:0;z-index:100;
+  background:rgba(0,0,0,.93);backdrop-filter:blur(5px);
+  flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}
+#win.show{display:flex}
+#win h2{font-family:'Cinzel Decorative',serif;font-size:2rem;color:var(--gold);margin-bottom:14px;
+  text-shadow:0 0 30px rgba(201,162,39,.6)}
+#win p{color:var(--text);font-size:1rem;line-height:1.9;max-width:420px}
+#win button{margin-top:24px;font-family:'Cinzel',serif;font-size:.85rem;font-weight:700;
+  padding:14px 30px;border:2px solid var(--gold);background:transparent;
+  color:var(--gold);border-radius:8px;cursor:pointer;letter-spacing:2px}
+#win button:hover{background:var(--gold);color:#000}
+
+/* ── UTIL ── */
+.util-row{display:flex;gap:7px;margin-top:9px}
+.util-row button{flex:1;background:none;border:1px solid #222;color:#444;
+  border-radius:8px;padding:9px;cursor:pointer;font-family:'Cinzel',serif;
+  font-size:.68rem;letter-spacing:1px;transition:.2s}
+.util-row button:hover{border-color:#444;color:#888}
+.hidden{display:none!important}
+
+/* ── GHOST INPUT ── */
+.ghost-input{background:#0a0b15;color:var(--text);border:1px solid var(--border);
+  border-radius:6px;padding:5px 8px;font-family:'IM Fell English',serif;font-size:.8rem;
+  width:110px}
+
+/* tabs */
+.tabs{display:flex;gap:0;margin-bottom:14px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.tab{flex:1;padding:10px;background:var(--surface);border:none;cursor:pointer;
+  font-family:'Cinzel',serif;font-size:.72rem;color:var(--dim);letter-spacing:1px;transition:.2s}
+.tab.active{background:var(--card);color:var(--gold)}
+.tab-content{display:none}.tab-content.active{display:block}

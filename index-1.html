@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐺 Ultimate Werewolf — Deluxe Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg"></div>
+<div class="wrap">
+
+<div class="hdr">
+  <h1>⚔ ULTIMATE WEREWOLF</h1>
+  <div class="sub">Deluxe Edition — All Roles Active</div>
+</div>
+
+<!-- WIN -->
+<div id="win">
+  <h2 id="wt">Victory!</h2>
+  <p id="wm"></p>
+  <button onclick="endWin()">↺ New Game</button>
+</div>
+
+<!-- ════ SETUP ════ -->
+<div id="setupSec" class="panel">
+  <h3>⚙ Players & Roles</h3>
+  <div class="add-row">
+    <input id="pname" placeholder="Player name…" onkeydown="if(event.key==='Enter')addP()">
+    <button class="b-add" onclick="addP()">+ Add</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('list')">Player List</button>
+    <button class="tab" onclick="switchTab('roles')">Role Guide</button>
+  </div>
+
+  <div id="tab-list" class="tab-content active">
+    <div id="setupList"></div>
+    <button class="b-start" id="startBtn" onclick="startGame()" disabled>▶ Begin Game</button>
+    <div class="util-row">
+      <button onclick="resetRoles()">↺ Reset Roles</button>
+      <button onclick="clearAll()">✕ Clear All</button>
+    </div>
+  </div>
+
+  <div id="tab-roles" class="tab-content">
+    <div class="rl-grid" id="roleLegend"></div>
+  </div>
+</div>
+
+<!-- ════ GAME ════ -->
+<div id="gameSec" class="hidden">
+  <div id="banner" class="night">
+    <div>
+      <div id="phaseTitle">🌙 Night 1</div>
+      <div id="phaseInfo">Wolves choose a victim…</div>
+    </div>
+    <button id="phaseBtn" onclick="advance()">Next ›</button>
+  </div>
+
+  <div class="sbar">
+    <span><span class="dot v"></span>Village: <strong id="sv">0</strong></span>
+    <span><span class="dot w"></span>Wolves: <strong id="sw">0</strong></span>
+    <span><span class="dot n"></span>Neutral: <strong id="sn">0</strong></span>
+    <span>Round <strong id="sr">1</strong></span>
+  </div>
+
+  <div id="log"></div>
+  <div id="activeList"></div>
+  <button onclick="backSetup()" style="background:none;border:1px solid #1a1a2a;color:#333;width:100%;padding:9px;border-radius:8px;cursor:pointer;font-family:'Cinzel',serif;font-size:.68rem;letter-spacing:1px;margin-top:6px">← Setup</button>
+</div>
+
+</div><!-- /wrap -->
+
+<script src="script.js"></script>
+</body>
+</html>
